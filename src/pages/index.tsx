@@ -15,6 +15,18 @@ export function SmallShrinkableOppositeAnchor(props: { children: ReactNode } & {
   </a >
 }
 
+export function SmallShrinkableContrastAnchor(props: { children: ReactNode } & { "aria-disabled"?: boolean } & JSX.IntrinsicElements["a"]) {
+  const { children, "aria-disabled": disabled = false, ...rest } = props
+
+  return <a className="group po-md bg-contrast rounded-xl outline-none aria-[disabled=false]:hover:bg-contrast-hover focus-visible:outline-contrast aria-disabled:opacity-50 transition-opacity"
+    aria-disabled={disabled}
+    {...rest}>
+    <div className="h-full w-full flex items-center justify-center gap-2 group-aria-[disabled=false]:group-active:scale-90 transition-transform">
+      {children}
+    </div>
+  </a >
+}
+
 export default function Home() {
   const proxies = useAllProxies(0)
 
@@ -39,6 +51,11 @@ export default function Home() {
               href="#proxies">
               All proxies
             </SmallShrinkableOppositeAnchor>
+            <div className="w-4" />
+            <SmallShrinkableContrastAnchor
+              href="#how-it-works">
+              How it works
+            </SmallShrinkableContrastAnchor>
           </div>
           <div className="grow" />
         </div>
@@ -50,6 +67,18 @@ export default function Home() {
             subtitle={`Proxies are incentivized to relay your data.`} />
           <InfoCard title="Open"
             subtitle={`Anyone can run a proxy and join the network.`} />
+        </div>
+        <div className="h-[25dvh]" />
+        <div id="how-it-works" />
+        <div className="h-[25dvh]" />
+        <div className="p-6 min-h-[50dvh] bg-contrast rounded-xl flex flex-col">
+          <h1 className="text-6xl">
+            How it works
+          </h1>
+          <div className="h-8 grow shrink-0" />
+          <div className="text-contrast">
+            All proxies use the <a className="underline" href="https://github.com/stars/hazae41/lists/network" target="_blank" rel="noreferrer">Network protocol</a>. This enables incentivization of the proxies and allows for a trustless and decentralized network. The protocol is based on Proof-of-Work to generate value for the proxies and to prevent spam. You mine a small amount of value and send it to the proxy in order to use it. This value can then be converted into a token by the proxy. The token can then be used to pay for the service without mining for it. This creates a market where the price of the token is determined by supply and demand for services.
+          </div>
         </div>
         <div className="h-[25dvh]" />
         <div id="proxies" />
