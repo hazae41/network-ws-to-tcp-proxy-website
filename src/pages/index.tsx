@@ -87,8 +87,9 @@ export default function Home() {
           <h1 className="text-6xl">
             Proxies
           </h1>
+          <div className="h-2" />
           <div className="text-contrast">
-            All registered public proxies
+            All registered public proxies. You can use them by following <a className="underline" href="https://github.com/hazae41/network-ws-to-tcp-proxy" target="_blank" rel="noreferrer">this protocol</a>. You can deploy your own proxy by following <a className="underline" href="https://github.com/hazae41/network-ws-to-tcp-proxy" target="_blank" rel="noreferrer">these instructions</a>. All proxies are provided as-is without any warranty on their service.
           </div>
           <div className="h-8 grow shrink-0" />
           <div className="">
