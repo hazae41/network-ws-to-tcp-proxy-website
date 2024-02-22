@@ -217,7 +217,7 @@ export function ProxyRow(props: { data: ProxyData }) {
     {active === true && <Outline.CheckIcon className="text-green-500 size-5" />}
     {active === false && <Outline.XMarkIcon className="text-red-500 size-5" />}
     <div className="w-4" />
-    <input className="bg-transparent appearance-none"
+    <input className="w-full bg-transparent appearance-none"
       readOnly
       onFocus={onClickOrFocus}
       onClick={onClickOrFocus}

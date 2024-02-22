@@ -21,7 +21,7 @@ export default function Home() {
   return <div className="h-full w-full overflow-y-scroll">
     <div className="h-full w-full m-auto max-w-3xl flex flex-col">
       <div className="p-4 grow flex flex-col">
-        <div className="h-[min(32rem,90dvh)] shrink-0 grow flex flex-col items-center">
+        <div className="h-[max(32rem,60dvh)] shrink-0 grow flex flex-col items-center">
           <div className="grow" />
           <h1 className="text-center font-medium text-6xl">
             WebSocket to TCP
