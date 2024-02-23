@@ -4,7 +4,7 @@ import { NetworkParams } from "@/libs/network";
 import { NetworkMixin, base16_decode_mixed, base16_encode_lower, initBundledOnce } from "@hazae41/network-bundle";
 
 async function generateOrThrow(params: NetworkParams) {
-  const { chainIdString, contractZeroHex, receiverZeroHex } = params
+  const { chainIdString, contractZeroHex, receiverZeroHex, nonceZeroHex, minimumZeroHex } = params
 
   await initBundledOnce()
 
@@ -17,13 +17,15 @@ async function generateOrThrow(params: NetworkParams) {
   const receiverBase16 = receiverZeroHex.slice(2).padStart(64, "0")
   const receiverMemory = base16_decode_mixed(receiverBase16)
 
-  const mixinStruct = new NetworkMixin(chainIdMemory, contractMemory, receiverMemory)
+  const nonceBase16 = nonceZeroHex.slice(2).padStart(64, "0")
+  const nonceMemory = base16_decode_mixed(nonceBase16)
 
-  const priceBigInt = 10n ** 5n
-  const priceBase16 = priceBigInt.toString(16).padStart(64, "0")
-  const priceMemory = base16_decode_mixed(priceBase16)
+  const mixinStruct = new NetworkMixin(chainIdMemory, contractMemory, receiverMemory, nonceMemory)
 
-  const generatedStruct = mixinStruct.generate(priceMemory)
+  const minimumBase16 = minimumZeroHex.slice(2).padStart(64, "0")
+  const minimumMemory = base16_decode_mixed(minimumBase16)
+
+  const generatedStruct = mixinStruct.generate(minimumMemory)
 
   const secretsMemory = generatedStruct.encode_secrets()
   const secretsBase16 = base16_encode_lower(secretsMemory)

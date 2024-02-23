@@ -175,6 +175,11 @@ export function ProxyRow(props: { data: ProxyData }) {
           method: "net_get"
         }).then(r => r.unwrap())
 
+        const minimumBigInt = BigInt(params.minimumZeroHex)
+
+        if (minimumBigInt > (2n ** 20n))
+          throw new Error("Minimum too high")
+
         const secretZeroHexArray = await generateOrThrow(params)
 
         await socketAndCounter.requestOrThrow<string>({
