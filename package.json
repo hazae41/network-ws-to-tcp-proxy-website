@@ -12,7 +12,7 @@
     "@hazae41/future": "^1.0.3",
     "@hazae41/glacier": "^2.0.12",
     "@hazae41/jsonrpc": "^1.0.5",
-    "@hazae41/network-bundle": "^1.1.0",
+    "@hazae41/network-bundle": "^1.2.1",
     "@hazae41/symbol-dispose-polyfill": "^1.0.2",
     "@heroicons/react": "^2.1.1",
     "next": "14.1.0",
