@@ -38,6 +38,4 @@ async function generateOrThrow(params: NetworkParams) {
   return secretZeroHexArray
 }
 
-self.addEventListener("message", async (e: MessageEvent<NetworkParams>) => {
-  self.postMessage(await generateOrThrow(e.data))
-})
+self.addEventListener("message", async (e: MessageEvent<NetworkParams>) => self.postMessage(await generateOrThrow(e.data)))
